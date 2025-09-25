@@ -22,8 +22,11 @@ class MyTask(db.Model):
         return f"Task {id}"
 
 
-with app.app_context():
-    db.create_all()
+try:
+    with app.app_context():
+        db.create_all()
+except Exception as ex:
+    print(f"Nothing new - {ex}")
 
 
 # Home Page
